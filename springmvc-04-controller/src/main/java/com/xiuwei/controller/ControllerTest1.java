@@ -13,6 +13,6 @@ public class ControllerTest1 implements Controller {
         ModelAndView mv = new ModelAndView();
         mv.addObject("msg", "接口方式");    //添加数据
         mv.setViewName("test1"); //设置视图名字--跳转
-        return null;
+        return mv;
     }
 }
