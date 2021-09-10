@@ -7,7 +7,7 @@ import org.springframework.web.servlet.mvc.Controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-//实现Controller接口就是控制器了。
+//实现Controller接口就是控制器了。 http://localhost:8080/springmvc_04_controller_war_exploded/t1
 public class ControllerTest1 implements Controller {
     public ModelAndView handleRequest(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception {
         ModelAndView mv = new ModelAndView();
