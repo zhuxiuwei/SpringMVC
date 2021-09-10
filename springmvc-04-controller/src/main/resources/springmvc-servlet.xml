@@ -25,6 +25,7 @@
         <property name="suffix" value=".jsp" />
     </bean>
 
+    <!-- 基于配置文件的 -->
     <bean name="/t1" class="com.xiuwei.controller.ControllerTest1" />
 
 </beans>
