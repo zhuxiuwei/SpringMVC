@@ -14,4 +14,11 @@ public class ControllerTest2{
         return "test1";     //指定视图
     }
 
+    //测试中文乱码问题
+    @RequestMapping("/e/t")
+    public String test(Model model,String name){
+        model.addAttribute("msg",name); //获取表单提交的值
+        return "test1"; //跳转到test页面显示输入的值
+    }
+
 }
