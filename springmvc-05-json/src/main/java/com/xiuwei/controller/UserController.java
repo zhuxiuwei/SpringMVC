@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class UserController {
 
-    @ResponseBody   //加了ResponseBody注解，就不走视图解析器了，会直接返回一个字符串
     @RequestMapping("/json1")
+    @ResponseBody   //加了ResponseBody注解，就不走视图解析器了，会直接返回一个字符串
     public String json1() throws JsonProcessingException {
         User user = new User("Michael Jackson", 18, "male");
 
