@@ -1,5 +1,6 @@
 package com.xiuwei.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -17,7 +18,7 @@ import java.util.Set;
 @RestController //@RestController，不走视图解析器了，会直接返回一个json
 public class UserController {
 
-    //单个对象
+    //Jackson - 单个对象
     @RequestMapping("/json1")
     //@ResponseBody   //加了ResponseBody注解，就不走视图解析器了，会直接返回一个字符串。(如果配置的不是@RestController，而是普通@Controller)
     public String jacksonJson() throws JsonProcessingException {
@@ -31,9 +32,8 @@ public class UserController {
         return json;    //{"name":"Michael Jackson","age":18,"sex":"male"}
     }
 
-    //集合对象
+    //Jackson - 集合对象
     @RequestMapping("/json2")
-    //@ResponseBody   //加了ResponseBody注解，就不走视图解析器了，会直接返回一个字符串。(如果配置的不是@RestController，而是普通@Controller)
     public String jacksonJson2() throws JsonProcessingException {
         Set<User> users = new HashSet<User>();
         users.add(new User("王老二", 18, "男"));
@@ -43,9 +43,8 @@ public class UserController {
         return json;    //[{"name":"唐大傻","age":18,"sex":"女"},{"name":"王老二","age":18,"sex":"男"}]
     }
 
-    //配置日期格式
+    //Jackson - 配置日期格式
     @RequestMapping("/json3")
-    //@ResponseBody   //加了ResponseBody注解，就不走视图解析器了，会直接返回一个字符串。(如果配置的不是@RestController，而是普通@Controller)
     public String jacksonJson3() throws JsonProcessingException {
 
         ObjectMapper mapper = new ObjectMapper();
@@ -63,5 +62,14 @@ public class UserController {
 
         String str = mapper.writeValueAsString(date);   //转换成我们期望的格式："2021-09-16 13:48:55"
         return str;
+    }
+
+    //FastJson
+    @RequestMapping("/json4")
+    public String fastJson1() throws JsonProcessingException {
+        Set<User> users = new HashSet<User>();
+        users.add(new User("王老二", 18, "男"));
+        users.add(new User("唐大傻", 18, "女"));
+        return JSON.toJSONString(users);
     }
 }
