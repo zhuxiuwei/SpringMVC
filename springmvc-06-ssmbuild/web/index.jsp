@@ -11,6 +11,8 @@
     <title>$Title$</title>
   </head>
   <body>
-  $END$
+  <ul>
+    <li><a href="book/all">全部书籍</a> </li>
+  </ul>
   </body>
 </html>
