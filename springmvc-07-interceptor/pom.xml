@@ -2,21 +2,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>SpringMVC</artifactId>
+        <groupId>com.xiuwei</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.xiuwei</groupId>
-    <artifactId>SpringMVC</artifactId>
-    <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>springmvc-01-servlet</module>
-        <module>springmvc-02-hellomvc</module>
-        <module>springmvc-03-annotatiton</module>
-        <module>springmvc-04-controller</module>
-        <module>springmvc-05-json</module>
-        <module>springmvc-06-ssmbuild</module>
-        <module>springmvc-07-interceptor</module>
-    </modules>
+    <artifactId>springmvc-07-interceptor</artifactId>
 
     <dependencies>
         <dependency>
@@ -45,5 +38,26 @@
             <version>1.2</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+    </build>
 
 </project>

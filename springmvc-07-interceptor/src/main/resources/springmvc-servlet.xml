@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       https://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc
+       https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <context:component-scan base-package="com.xiuwei.controller"/>
+
+    <!-- 视图解析器 -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          id="internalResourceViewResolver">
+        <!-- 前缀 -->
+        <property name="prefix" value="/WEB-INF/jsp/" />
+        <!-- 后缀 -->
+        <property name="suffix" value=".jsp" />
+    </bean>
+
+    <!-- 拦截器配置。注意和web.xml里 filter的配置语法不一样，但思想差不多。-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!--
+                /test/**: 包含/test这个请求下的所有请求（包括继续递归后面级别的地址 ），如：拦截/test/a/b、/test/a
+                /test/*: 只包含/test这个请求下一级的请求（不递归再下一级），如：不拦截/test/a/b，拦截/test/a
+            -->
+            <mvc:mapping path="/test/**"/>
+            <bean class="com.xiuwei.config.MyInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+</beans>
